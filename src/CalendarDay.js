@@ -179,12 +179,15 @@ class CalendarDay extends Component {
         ];
       }
     }
-
+    const circleSize = this.state.containerSize - 30;
+    const circleRadius = circleSize / 2
+    const circlePadding = circleSize / 5
     let responsiveDateContainerStyle = {
-      width: this.state.containerSize,
-      height: this.state.containerSize,
-      borderRadius: this.state.containerBorderRadius,
-      padding: this.state.containerPadding
+      width: circleSize,
+      height: circleSize,
+      borderRadius: circleRadius,
+      paddingTop: 1,
+      paddingBottom: 1
     };
 
     return (
@@ -199,6 +202,13 @@ class CalendarDay extends Component {
             dateViewStyle
           ]}
         >
+        <View
+          style={[
+            responsiveDateContainerStyle,
+            dateViewStyle
+          ]}
+        >
+
           {this.props.showDayName && (
             <Text
               style={[dateNameStyle, { fontSize: this.state.dateNameFontSize }]}
@@ -218,6 +228,7 @@ class CalendarDay extends Component {
               {this.props.date.date()}
             </Text>
           )}
+        </View>
         </View>
       </TouchableOpacity>
     );
